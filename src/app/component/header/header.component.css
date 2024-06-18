@@ -1,0 +1,9 @@
+.card {
+  color: light-dark(#333b3c, #efefec);
+  background-color: light-dark(#efedea, #2b303b);
+  font-family: system-ui, -apple-system, blinkmacsystemfont, "segoe ui", roboto,
+    oxygen, ubuntu, cantarell, "open sans", "helvetica neue", sans-serif;
+}
+.form-select {
+  max-width: 200px;
+}
