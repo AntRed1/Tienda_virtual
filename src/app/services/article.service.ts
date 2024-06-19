@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { describe } from 'node:test';
 
 @Injectable({
   providedIn: 'root',
@@ -13,43 +12,57 @@ export class ArticleService {
       name: 'Silla de Masajes',
       category: 'Hogar',
       price: 100,
-      describe:
-        'Silla de masaje de lujo, pantalla de control inteligente AI, silla portátil multifuncional de masaje con airbag de cuerpo completo.',
+      description: 'Silla de masaje de lujo, pantalla de control inteligente AI, silla portátil multifuncional de masaje con airbag de cuerpo completo.',
+      images: [
+        'img/img_massage_chair/image.png',
+        'img/img_massage_chair/Screenshot 2024-06-02 073355.png',
+        'img/img_massage_chair/Screenshot 2024-06-02 073555.png'
+      ]
     },
     {
       id: 2,
       name: 'Ventiladores',
       category: 'Electronica',
       price: 10,
-      describe: 'Ventiladores portátiles USB con nivel de polvo de ventilador.',
+      description: 'Ventiladores portátiles USB con nivel de polvo de ventilador.',
+      images: [
+        'img/img_fan/Screenshot 2024-06-02 073858.png',
+        'img/img_fan/Screenshot 2024-06-02 074010.png'
+      ]
     },
-    ,
     {
       id: 3,
       name: 'Cepillo de limpieza',
       category: 'Hogar',
       price: 25,
-      describe:
-        'Cepillo de limpieza eléctrico inteligente, cepillo giratorio, cepillo de limpieza eléctrico.',
+      description: 'Cepillo de limpieza eléctrico inteligente, cepillo giratorio, cepillo de limpieza eléctrico.',
+      images: [
+        'img/img_cepillo/Screenshot 2024-06-02 074209.png',
+        'img/img_cepillo/Screenshot 2024-06-02 074247.png'
+      ]
     },
-    ,
     {
       id: 4,
       name: 'Trapeador de limpieza',
       category: 'Hogar',
       price: 30,
-      describe:
-        'Trapeador de limpieza, cabezal de trapeador plano de microfibra reutilizable y trapeador de microfibra de acero inoxidable.',
+      description: 'Trapeador de limpieza, cabezal de trapeador plano de microfibra reutilizable y trapeador de microfibra de acero inoxidable.',
+      images: [
+        'img/img_fregona/Screenshot 2024-06-02 074542.png',
+        'img/img_fregona/Screenshot 2024-06-02 074829.png'
+      ]
     },
-    ,
     {
       id: 5,
       name: 'Cargador portátil',
       category: 'Electronica',
       price: 15,
-      describe:
-        'Cargador portátil del banco 10000mah del poder del viaje de la electrónica de consumo del nuevo regalo promocional de los productos calientes de la venta.',
-    },
+      description: 'Cargador portátil del banco 10000mah del poder del viaje de la electrónica de consumo del nuevo regalo promocional de los productos calientes de la venta.',
+      images: [
+        'img/img_power bank/1.png',
+        'img/img_power bank/2.png'
+      ]
+    }
   ];
 
   getArticles() {

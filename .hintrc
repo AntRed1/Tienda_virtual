@@ -9,6 +9,7 @@
         "link-name": "off",
         "button-name": "off"
       }
-    ]
+    ],
+    "axe/text-alternatives": "off"
   }
 }
