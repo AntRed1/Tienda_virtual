@@ -20,9 +20,8 @@ export class MainComponent implements AfterViewInit {
 
   private initializeGallery() {
     const galleryItems = document.querySelectorAll('.gallery-item');
-    const modalImage = document.getElementById(
-      'modal-image'
-    ) as HTMLImageElement;
+
+    const modalImage = document.getElementById('modal-image') as HTMLImageElement;
     const modalElement = document.getElementById('gallery-modal');
 
     if (modalElement) {
