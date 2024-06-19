@@ -10,6 +10,8 @@ import { FooterComponent } from '../footer/footer.component';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
+  title = 'Tienda Virtual';
+
   constructor(private resendEmailService: ResendEmailService) {}
 
   sendEmail(event: Event) {
