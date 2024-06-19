@@ -99,7 +99,7 @@
                   completo.
                 </p>
                 <p class="card-text price">
-                  <span class="currency-symbol">$</span>1000<span
+                  <span class="currency-symbol">$</span>100<span
                     class="decimal-part"
                     >00</span
                   >
@@ -142,24 +142,22 @@
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    @defer (on immediate) {
                     <img
                       class="d-block w-100 gallery-item"
                       src="img/img_fan/Screenshot 2024-06-02 073858.png"
                       alt="Ventiladores"
                       data-bs-toggle="modal"
                       data-bs-target="#gallery-modal"
-                    />}
+                    />
                   </div>
                   <div class="carousel-item">
-                    @defer (on immediate) {
                     <img
                       class="d-block w-100 gallery-item"
                       src="img/img_fan/Screenshot 2024-06-02 074010.png"
                       alt="Ventiladores"
                       data-bs-toggle="modal"
                       data-bs-target="#gallery-modal"
-                    />}
+                    />
                   </div>
                 </div>
                 <button
@@ -241,24 +239,22 @@
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    @defer (on immediate) {
                     <img
                       class="d-block w-100 gallery-item"
                       src="img/img_cepillo/Screenshot 2024-06-02 074209.png"
                       alt="Cepillo de limpieza"
                       data-bs-toggle="modal"
                       data-bs-target="#gallery-modal"
-                    />}
+                    />
                   </div>
                   <div class="carousel-item">
-                    @defer (on immediate) {
                     <img
                       class="d-block w-100 gallery-item"
                       src="img/img_cepillo/Screenshot 2024-06-02 074247.png"
                       alt="Cepillo de limpieza"
                       data-bs-toggle="modal"
                       data-bs-target="#gallery-modal"
-                    />}
+                    />
                   </div>
                 </div>
                 <button
@@ -335,24 +331,22 @@
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    @defer (on immediate) {
                     <img
                       class="d-block w-100 gallery-item"
                       src="img/img_fregona/Screenshot 2024-06-02 074542.png"
                       alt="Trapeador de limpieza"
                       data-bs-toggle="modal"
                       data-bs-target="#gallery-modal"
-                    />}
+                    />
                   </div>
                   <div class="carousel-item">
-                    @defer (on immediate) {
                     <img
                       class="d-block w-100 gallery-item"
                       src="img/img_fregona/Screenshot 2024-06-02 074829.png"
                       alt="Trapeador de limpieza"
                       data-bs-toggle="modal"
                       data-bs-target="#gallery-modal"
-                    />}
+                    />
                   </div>
                 </div>
                 <button
@@ -430,14 +424,13 @@
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    @defer (on immediate) {
                     <img
                       class="d-block w-100 gallery-item"
                       src="img/img_power bank/1.png"
                       alt="Trapeador de limpieza"
                       data-bs-toggle="modal"
                       data-bs-target="#gallery-modal"
-                    />}
+                    />
                   </div>
                   <div class="carousel-item">
                     <img
@@ -502,14 +495,14 @@
             </div>
             <div class="card-body">
               <div
-                id="5carouselExampleRide"
+                id="6carouselExampleRide"
                 class="carousel slide"
                 data-bs-ride="carousel"
               >
                 <div class="carousel-indicators">
                   <button
                     type="button"
-                    data-bs-target="#5carouselExampleRide"
+                    data-bs-target="#6carouselExampleRide"
                     data-bs-slide-to="0"
                     class="active"
                     aria-current="true"
@@ -517,7 +510,7 @@
                   ></button>
                   <button
                     type="button"
-                    data-bs-target="#5carouselExampleRide"
+                    data-bs-target="#6carouselExampleRide"
                     data-bs-slide-to="1"
                     aria-label="Slide 2"
                   ></button>
@@ -533,21 +526,19 @@
                     />
                   </div>
                   <div class="carousel-item">
-                    @defer (on immediate) {
-
                     <img
                       class="d-block w-100 gallery-item"
                       src="img/img_power bank/2.png"
                       alt="Trapeador de limpieza"
                       data-bs-toggle="modal"
                       data-bs-target="#gallery-modal"
-                    />}
+                    />
                   </div>
                 </div>
                 <button
                   class="carousel-control-prev bg-link"
                   type="button"
-                  data-bs-target="#5carouselExampleRide"
+                  data-bs-target="#6carouselExampleRide"
                   data-bs-slide="prev"
                 >
                   <span
@@ -559,7 +550,7 @@
                 <button
                   class="carousel-control-next bg-link"
                   type="button"
-                  data-bs-target="#5carouselExampleRide"
+                  data-bs-target="#6carouselExampleRide"
                   data-bs-slide="next"
                 >
                   <span
@@ -594,27 +585,24 @@
   <div
     class="modal fade"
     id="gallery-modal"
-    tabindex="-1"
+    tabindex="-2"
     aria-labelledby="gallery-modal-label"
     aria-hidden="true"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
   >
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button
             type="button"
-            class="btn-close"
+            class="btn-close alert"
             data-bs-dismiss="modal"
             aria-label="Close"
           ></button>
         </div>
         <div class="modal-body text-center">
-          <img
-            src=""
-            id="modal-image"
-            class="img-fluid"
-            alt="Imagen en el modal"
-          />
+          <img src="" id="modal-image" class="img-fluid" alt="Imagenes" />
         </div>
       </div>
     </div>
