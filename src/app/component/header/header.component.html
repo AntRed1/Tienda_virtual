@@ -1,92 +1,190 @@
-<header class="text-white text-center py-md-1 table-responsive-md">
+<header class="text-white text-center py-2">
   <div class="card rounded-5 rounded-top-0 shadow">
     <div class="card-body">
-      <nav class="navbar navbar-expand-lg bg-body-secondary-emphasis h4">
-        <p>{{ title }}</p>
-        <div class="container-fluid">
-          <a class="navbar-brand btn btn-outline-secondary" href="#"
-            ><svg
+      <nav class="navbar navbar-expand-lg bg-body-secondary-emphasis h5">
+        <!-- Logo y título -->
+        <a class="navbar-brand btn btn-outline-secondary me-2" href="">
+          {{ title }}
+        </a>
+
+        <!-- Botón de la tienda con icono -->
+        <a class="navbar-brand btn btn-outline-secondary me-2" href="">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="currentColor"
+            class="bi bi-box-seam-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003zM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461z"
+            />
+          </svg>
+          Tienda
+        </a>
+
+        <!-- Botón de hamburguesa para móviles -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Elementos del menú -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link btn btn-outline-light me-2"
+                aria-current="page"
+                href="#"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle btn btn-outline-light me-2"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Dropdown
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <!-- Select de categorías -->
+          <select class="form-select me-2" aria-label="Select category">
+            <option selected>Categories</option>
+            <option value="1">Category 1</option>
+            <option value="2">Category 2</option>
+            <option value="3">Category 3</option>
+          </select>
+
+          <!-- Formulario de búsqueda -->
+          <form class="d-flex">
+            <input
+              class="form-control me-2"
+              type="search"
+              minlength="1"
+              maxlength="50"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Buscar
+            </button>
+          </form>
+
+          <!-- Botón del carrito -->
+          <button
+            class="btn btn-outline-primary ms-2"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight"
+          >
+            <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="60"
-              height="50"
+              width="24"
+              height="24"
               fill="currentColor"
-              class="bi bi-box-seam-fill"
+              class="bi bi-cart3"
               viewBox="0 0 16 16"
-              (click)="sendEmail($event)"
             >
               <path
-                fill-rule="evenodd"
-                d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003zM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461z"
-              /></svg
-          ></a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
+                d="M0 1.5C0 .675.675 0 1.5 0h11.906c.43 0 .804.26.962.648l1.607 4.315h-2.42a.75.75 0 0 0-.694.485L11.15 9.5H3.75a.75.75 0 0 0-.694.485l-1.144 3.428a.75.75 0 0 1-.717.514H.75a.75.75 0 1 0 0 1.5h1.16l.628-1.883 1.222-3.665h8.186l1.58 4.25H3.71l-.53 1.592H11.5a.75.75 0 0 1 .717.514l.75 2.25a.75.75 0 0 0 .714.514H15a.75.75 0 0 0 .75-.75V6.5a.75.75 0 0 0-.75-.75h-1.5V5.325A1.325 1.325 0 0 0 12.875 4H2.898L1.464 1.5H0z"
+              />
+            </svg>
+            Carrito
+            <span class="badge bg-secondary">0</span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a
-                  class="nav-link btn btn-outline-light"
-                  aria-current="page"
-                  href=""
-                  >Home</a
-                >
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle btn btn-outline-light"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li>
-                    <hr class="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <div
-              class="bg-body-secondary-emphasis col-lg-9 col-md-7 col-sm-4 d-flex"
-            >
-              <select class="form-select me-2" aria-label="Select category">
-                <option selected>Categories</option>
-                <option value="1">Category 1</option>
-                <option value="2">Category 2</option>
-                <option value="3">Category 3</option>
-              </select>
-              <form
-                class="col-lg-7 d-flex justify-content-md-center"
-                role="search"
+
+          <!-- Botón de login y bienvenida -->
+          <ng-container *ngIf="!isLoggedIn; else loggedInTemplate">
+            <button class="btn btn-outline-light ms-2" type="button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-person-fill"
+                viewBox="0 0 16 16"
               >
-                <input
-                  class="form-control me-2"
-                  type="search"
-                  minlength="1"
-                  maxlength="50"
-                  placeholder="Buscar"
-                  aria-label="Search"
+                <path
+                  d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
                 />
-                <button class="btn btn-outline-success" type="submit">
-                  Buscar
-                </button>
-              </form>
+              </svg>
+              Iniciar sesión
+            </button>
+          </ng-container>
+          <ng-template #loggedInTemplate>
+            <button
+              class="btn btn-outline-light ms-2"
+              type="button"
+              data-bs-toggle="toast"
+              data-bs-target="#liveToast"
+              aria-controls="liveToast"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-person-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
+                />
+              </svg>
+              Bienvenido/a
+            </button>
+          </ng-template>
+
+          <!-- Toast para mostrar mensaje de usuario logeado -->
+          <button class="btn btn-primary ms-2" id="liveToastBtn">
+            Show live toast
+          </button>
+          <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div
+              id="liveToast"
+              class="toast"
+              role="alert"
+              aria-live="assertive"
+              aria-atomic="true"
+            >
+              <div class="toast-header">
+                <img src="..." class="rounded me-2" alt="..." />
+                <strong class="me-auto">Bootstrap</strong>
+                <small>11 mins ago</small>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="toast"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="toast-body">
+                Hello, world! This is a toast message.
+              </div>
             </div>
           </div>
         </div>

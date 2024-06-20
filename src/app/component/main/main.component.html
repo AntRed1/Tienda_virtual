@@ -1,55 +1,148 @@
 <main class="container-fluid alert table-responsive-md">
   <article>
-    <section class="gallery min-vh-100">
-      <div class="row container-fluid">
-        <div class="col-sm-3 col-md-3 col-lg-3 cell" *ngFor="let articulo of articulos">
-          <div class="card">
-            <div class="card-header">
-              <p class="card-header text-center">
-                <strong>{{ articulo.name }}</strong>
-              </p>
-            </div>
-            <div class="card-body">
-              <div [attr.id]="articulo.id + 'carouselExampleRide'" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                  <button *ngFor="let image of articulo.images; let i = index" type="button" [attr.data-bs-target]="'#' + articulo.id + 'carouselExampleRide'" [attr.data-bs-slide-to]="i" [class.active]="i === 0" [attr.aria-current]="i === 0 ? 'true' : null" [attr.aria-label]="'Slide ' + (i + 1)"></button>
-                </div>
-                <div class="carousel-inner">
-                  <div *ngFor="let image of articulo.images; let i = index" class="carousel-item" [class.active]="i === 0">
-                    <img class="d-block w-100 gallery-item" [src]="image" [alt]="articulo.name" data-bs-toggle="modal" data-bs-target="#gallery-modal" />
-                  </div>
-                </div>
-                <button class="carousel-control-prev bg-link" type="button" [attr.data-bs-target]="'#' + articulo.id + 'carouselExampleRide'" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next bg-link" type="button" [attr.data-bs-target]="'#' + articulo.id + 'carouselExampleRide'" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-              <div class="card-footer">
-                <p class="card-text">{{ articulo.description }}</p>
-                <p class="card-text price">
-                  <span class="currency-symbol">$</span>{{ articulo.price }}<span class="decimal-part">00</span>
+    <aside>
+      <section class="gallery min-vh-100">
+        <div class="row container-fluid">
+          @for (articulo of articulos; track articulo.id) {
+          <div class="col-sm-3 col-md-3 col-lg-3 cell">
+            <div class="card">
+              <div class="card-header">
+                <p class="card-header text-center">
+                  <strong>{{ articulo.name }}</strong>
                 </p>
+              </div>
+              <div class="card-body">
+                <div
+                  [attr.id]="articulo.id + 'carouselExampleRide'"
+                  class="carousel slide"
+                  data-bs-ride="carousel"
+                >
+                  <div class="carousel-indicators">
+                    <button
+                      *ngFor="let image of articulo.images; let i = index"
+                      type="button"
+                      [attr.data-bs-target]="
+                        '#' + articulo.id + 'carouselExampleRide'
+                      "
+                      [attr.data-bs-slide-to]="i"
+                      [class.active]="i === 0"
+                      [attr.aria-current]="i === 0 ? 'true' : null"
+                      [attr.aria-label]="'Slide ' + (i + 1)"
+                    ></button>
+                  </div>
+                  <div class="carousel-inner">
+                    <div
+                      *ngFor="let image of articulo.images; let i = index"
+                      class="carousel-item"
+                      [class.active]="i === 0"
+                    >
+                      <img
+                        class="d-block w-100 gallery-item"
+                        [src]="image"
+                        [alt]="articulo.name"
+                        data-bs-toggle="modal"
+                        data-bs-target="#gallery-modal"
+                      />
+                    </div>
+                  </div>
+                  <button
+                    class="carousel-control-prev bg-link"
+                    type="button"
+                    [attr.data-bs-target]="
+                      '#' + articulo.id + 'carouselExampleRide'
+                    "
+                    data-bs-slide="prev"
+                  >
+                    <span
+                      class="carousel-control-prev-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button
+                    class="carousel-control-next bg-link"
+                    type="button"
+                    [attr.data-bs-target]="
+                      '#' + articulo.id + 'carouselExampleRide'
+                    "
+                    data-bs-slide="next"
+                  >
+                    <span
+                      class="carousel-control-next-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+                <div class="card-footer">
+                  <p class="card-text">{{ articulo.description }}</p>
+                  <p class="card-text price">
+                    <span class="currency-symbol">$</span>{{ articulo.price
+                    }}<span class="decimal-part">00</span>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
+          }
         </div>
+      </section>
+
+  <!-- offcanvas -->
+      <div
+        class="offcanvas offcanvas-end"
+        tabindex="-1"
+        id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasRightLabel">
+            Offcanvas right
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body">...</div>
       </div>
-    </section>
+    </aside>
   </article>
 
   <!-- Modal -->
-  <div class="modal fade" id="gallery-modal" tabindex="-2" aria-labelledby="gallery-modal-label" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div
+    class="modal fade"
+    id="gallery-modal"
+    tabindex="-1"
+    aria-labelledby="gallery-modal-label"
+    aria-hidden="true"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+  >
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="btn-close alert" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button
+            type="button"
+            class="btn-close alert"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
         <div class="modal-body text-center">
           <img src="" id="modal-image" class="img-fluid" alt="Imagenes" />
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="button" class="btn btn-primary">Understood</button>
         </div>
       </div>
     </div>

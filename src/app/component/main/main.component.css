@@ -81,3 +81,9 @@ img {
 #gallery-modal .modal-img {
   width: 100%;
 }
+
+.modal-title {
+  flex: 1;
+  text-align: center;
+}
+

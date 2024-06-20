@@ -9,6 +9,7 @@ import {
 import { FooterComponent } from '../footer/footer.component';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ArticleService } from '../../services/article.service';
+import { ResendEmailService } from '../../services/resend-email.service';
 
 @Component({
   selector: 'app-main',
@@ -22,7 +23,8 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    private articleService: ArticleService
+    private articleService: ArticleService,
+    private resendEmailService: ResendEmailService
   ) {}
 
   ngOnInit() {
@@ -63,5 +65,28 @@ export class MainComponent implements OnInit, AfterViewInit {
         });
       });
     }
+  }
+
+  sendEmail(event: Event) {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+
+    const to = (form.querySelector('#recipientEmail') as HTMLInputElement)
+      ?.value;
+    const subject = (form.querySelector('#emailSubject') as HTMLInputElement)
+      ?.value;
+    const message = (form.querySelector('#emailMessage') as HTMLTextAreaElement)
+      ?.value;
+
+    this.resendEmailService.sendEmail(to, subject, message).then(
+      () => {
+        console.log('Email sent successfully!');
+        // Aquí puedes agregar una notificación o mensaje de éxito si lo deseas
+      },
+      (error) => {
+        console.error('Failed to send email:', error);
+        // Aquí puedes manejar el error, mostrar mensajes de error, etc.
+      }
+    );
   }
 }
