@@ -1,0 +1,91 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card shadow-lg">
+        <div class="card-body p-5">
+          <h2 class="text-center mb-4">Registrarse</h2>
+          <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm">
+            <div class="mb-3">
+              <label for="name" class="form-label">Nombres</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                ngModel
+                required
+                class="form-control"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="lastName" class="form-label">Apellidos</label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                ngModel
+                required
+                class="form-control"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="telephone" class="form-label">Celular</label>
+              <input
+                type="tel"
+                id="telephone"
+                name="telephone"
+                ngModel
+                required
+                class="form-control"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                ngModel
+                required
+                email
+                class="form-control"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                ngModel
+                required
+                class="form-control"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="address" class="form-label">Dirección</label>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                ngModel
+                required
+                class="form-control"
+              />
+            </div>
+            <div class="text-center mb-3">
+              <button type="submit" class="btn btn-primary">Registrar</button>
+            </div>
+          </form>
+          <div class="text-center">
+            <p>
+              ¿Ya tienes cuenta?
+              <a [routerLink]="['/login']" class="btn btn-link"
+                >Iniciar Sesión</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

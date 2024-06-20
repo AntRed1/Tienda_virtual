@@ -2,22 +2,20 @@
   <div class="card rounded-5 rounded-top-0 shadow">
     <div class="card-body">
       <nav class="navbar navbar-expand-lg bg-body-secondary-emphasis h5">
-        <!-- Logo y título -->
-        <a class="navbar-brand btn btn-outline-secondary me-2" href="">
-          {{ title }}
-        </a>
-
-        <!-- Elementos del menú -->
+        <a
+          class="navbar-brand btn btn-outline-secondary me-2"
+          [routerLink]="['/contacts']"
+          >{{ title }}</a
+        >
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a
                 class="nav-link btn btn-outline-light me-2"
                 aria-current="page"
-                href=""
+                routerLink="/dashboard"
+                >Home</a
               >
-                Home
-              </a>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -26,12 +24,17 @@
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
+                >Opciones</a
               >
-                Opciones
-              </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Contactos</a></li>
-                <li><a class="dropdown-item" href="#">Comentarios</a></li>
+                <li>
+                  <a class="dropdown-item" routerLink="/contacts">Contactos</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="/contacts"
+                    >Comentarios</a
+                  >
+                </li>
               </ul>
             </li>
             <svg
@@ -50,7 +53,6 @@
             </svg>
           </ul>
 
-          <!-- Formulario de búsqueda -->
           <form class="d-flex">
             <input
               class="form-control me-2"
@@ -65,7 +67,6 @@
             </button>
           </form>
 
-          <!-- Botón del carrito -->
           <button
             class="btn btn-outline-primary ms-2"
             type="button"
@@ -89,12 +90,11 @@
             <span class="badge bg-secondary">0</span>
           </button>
 
-          <!-- Botón de login y bienvenida -->
           <ng-container *ngIf="!isLoggedIn; else loggedInTemplate">
             <button
               class="btn btn-outline-light ms-2"
-              type="button"
               (click)="login()"
+              type="button"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -114,10 +114,8 @@
           <ng-template #loggedInTemplate>
             <button
               class="btn btn-outline-light ms-2"
+              (click)="logout()"
               type="button"
-              data-bs-toggle="toast"
-              data-bs-target="#liveToast"
-              aria-controls="liveToast"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -131,38 +129,9 @@
                   d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
                 />
               </svg>
-              Bienvenido/a
+              Bienvenido/a {{ name }}
             </button>
           </ng-template>
-
-          <!-- Toast para mostrar mensaje de usuario logeado -->
-          <button class="btn btn-primary ms-2" id="liveToastBtn">
-            Show live toast
-          </button>
-          <div class="toast-container position-fixed bottom-0 end-0 p-3">
-            <div
-              id="liveToast"
-              class="toast"
-              role="alert"
-              aria-live="assertive"
-              aria-atomic="true"
-            >
-              <div class="toast-header">
-                <img src="..." class="rounded me-2" alt="..." />
-                <strong class="me-auto">Bootstrap</strong>
-                <small>11 mins ago</small>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="toast"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div class="toast-body">
-                Hello, world! This is a toast message.
-              </div>
-            </div>
-          </div>
         </div>
       </nav>
     </div>

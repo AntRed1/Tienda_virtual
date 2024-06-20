@@ -23,6 +23,7 @@
       {
         "list": "off"
       }
-    ]
+    ],
+    "disown-opener": "off"
   }
 }

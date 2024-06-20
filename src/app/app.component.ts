@@ -1,3 +1,5 @@
+import { RegisterComponent } from './component/pages/register/register.component';
+import { LoginComponent } from './component/pages/login/login.component';
 import { ContactsComponent } from './component/pages/contacts/contacts.component';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
@@ -14,6 +16,8 @@ import { FooterComponent } from './component/footer/footer.component';
     HeaderComponent,
     MainComponent,
     ContactsComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

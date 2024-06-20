@@ -1,0 +1,27 @@
+/* contacts.component.css */
+
+.social-media-list {
+  padding: 20px;
+}
+
+.social-media-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.social-media-list ul li {
+  margin-bottom: 10px;
+}
+
+.social-media-list ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.social-media-list ul li a:hover {
+  color: #007bff;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}

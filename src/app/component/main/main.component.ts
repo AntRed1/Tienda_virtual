@@ -10,13 +10,14 @@ import { FooterComponent } from '../footer/footer.component';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ArticleService } from '../../services/article.service';
 import { ResendEmailService } from '../../services/resend-email.service';
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
-  selector: 'app-main',
-  standalone: true,
-  imports: [FooterComponent, ContactsComponent, CommonModule],
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css'],
+    selector: 'app-main',
+    standalone: true,
+    templateUrl: './main.component.html',
+    styleUrls: ['./main.component.css'],
+    imports: [FooterComponent, ContactsComponent, CommonModule, HeaderComponent]
 })
 export class MainComponent implements OnInit, AfterViewInit {
   articulos: any[] = [];
