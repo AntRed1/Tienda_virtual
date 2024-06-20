@@ -1,5 +1,11 @@
 <!-- <router-outlet /> -->
 
 <app-header></app-header>
+
 <app-main></app-main>
+
+@defer (on viewport) {
 <app-footer></app-footer>
+}@placeholder {
+<p>.</p>
+}
