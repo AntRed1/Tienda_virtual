@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import * as bcrypt from 'bcryptjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private static idCounter = 0;
@@ -32,8 +31,7 @@ export class AuthService {
 
   saveUserData(userData: any) {
     const id = this.generateId();
-    const hashedPassword = bcrypt.hashSync(userData.password, 10);
-    const dataWithId = { id, ...userData, password: hashedPassword };
+    const dataWithId = { id, ...userData };
     let users = this.getAllUsers();
     users.push(dataWithId);
     if (this.isLocalStorageAvailable()) {
@@ -41,16 +39,20 @@ export class AuthService {
     }
   }
 
-  getUserByEmailAndPassword(email: string, password: string) {
+  getUserByEmailAndPassword(email: string, password: string): any {
     const users = this.getAllUsers();
-    const user = users.find((user: { email: string; password: string; }) => user.email === email);
-    if (user && bcrypt.compareSync(password, user.password)) {
-      return user;
+    const user = users.find(
+      (user: { email: string; password: string }) =>
+        user.email === email && user.password === password
+    );
+    if (user) {
+      const { password: _, ...userWithoutPassword } = user; // Eliminamos la contraseña antes de devolver el usuario
+      return userWithoutPassword;
     }
     return null;
   }
 
-  getAllUsers() {
+  getAllUsers(): any[] {
     if (this.isLocalStorageAvailable()) {
       const data = localStorage.getItem('users');
       return data ? JSON.parse(data) : [];

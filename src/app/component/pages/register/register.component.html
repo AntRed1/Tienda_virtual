@@ -3,7 +3,9 @@
     <div class="col-lg-6">
       <div class="card shadow-lg">
         <div class="card-body p-5">
-          <h2 class="text-center mb-4">Registrarse</h2>
+          <h2 class="text-center mb-4">
+            <a [routerLink]="['/dashboard']">{{ title }}</a>
+          </h2>
           <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm">
             <div class="mb-3">
               <label for="name" class="form-label">Nombres</label>
@@ -11,6 +13,9 @@
                 type="text"
                 id="name"
                 name="name"
+                maxlength="50"
+                minlength="1"
+                placeholder="Nombres"
                 ngModel
                 required
                 class="form-control"
@@ -22,6 +27,9 @@
                 type="text"
                 id="lastName"
                 name="lastName"
+                maxlength="50"
+                minlength="1"
+                placeholder="Apellidos"
                 ngModel
                 required
                 class="form-control"
@@ -33,6 +41,9 @@
                 type="tel"
                 id="telephone"
                 name="telephone"
+                maxlength="11"
+                minlength="1"
+                placeholder="000-000-000"
                 ngModel
                 required
                 class="form-control"
@@ -44,6 +55,9 @@
                 type="email"
                 id="email"
                 name="email"
+                maxlength="50"
+                minlength="1"
+                placeholder="namexample@none.com"
                 ngModel
                 required
                 email
@@ -56,6 +70,9 @@
                 type="password"
                 id="password"
                 name="password"
+                maxlength="50"
+                minlength="1"
+                placeholder="Contraseña"
                 ngModel
                 required
                 class="form-control"
@@ -67,6 +84,9 @@
                 type="text"
                 id="address"
                 name="address"
+                maxlength="100"
+                minlength="1"
+                placeholder="Direccion"
                 ngModel
                 required
                 class="form-control"

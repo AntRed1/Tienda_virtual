@@ -21,6 +21,8 @@ import { RegisterComponent } from '../register/register.component';
   ],
 })
 export class LoginComponent {
+  title = 'Iniciar Sesión';
+
   constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit(loginForm: NgForm) {
@@ -30,7 +32,7 @@ export class LoginComponent {
       if (user) {
         this.authService.setCurrentUser(user);
         Swal.fire({
-          title: `Bienvenido/a ${user.name}!`,
+          title: `¡Bienvenido/a ${user.name}!`,
           icon: 'success',
         }).then(() => {
           this.router.navigate(['/dashboard']);
@@ -38,10 +40,17 @@ export class LoginComponent {
       } else {
         Swal.fire({
           title: 'Credenciales inválidas',
+          text: 'El email o la contraseña proporcionados son incorrectos.',
           icon: 'error',
         });
       }
-      loginForm.reset();
+      loginForm.resetForm();
+    } else {
+      Swal.fire({
+        title: 'Error',
+        text: 'Por favor, completa todos los campos correctamente.',
+        icon: 'error',
+      });
     }
   }
 }

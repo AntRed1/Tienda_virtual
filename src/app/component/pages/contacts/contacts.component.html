@@ -1,3 +1,62 @@
 <app-header></app-header>
 
+<div class="container mt-5">
+  <div class="row">
+    <!-- Columna para redes sociales -->
+    <div class="col-md-4 mb-4">
+      <h4>Redes Sociales</h4>
+      <ul class="list-unstyled">
+        <li>
+          <a href="mailto:anthonyatras@gmail.com" target="_blank" aria-label="Correo Electrónico">
+            <i class="fa-solid fa-envelope"></i> Correo
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/anthony-j-rojas-v-29b26a207/" target="_blank" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i> LinkedIn
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/AntRed1" target="_blank" aria-label="GitHub">
+            <i class="fa fa-github fs-3" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Columna para el formulario de contacto -->
+    <div class="col-md-8">
+      <h4>Dejar Comentarios</h4>
+      <form>
+        <!-- Nombre -->
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" name="nombre" required>
+        </div>
+
+        <!-- Apellidos -->
+        <div class="mb-3">
+          <label for="apellidos" class="form-label">Apellidos</label>
+          <input type="text" class="form-control" id="apellidos" name="apellidos" required>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+
+        <!-- Comentarios -->
+        <div class="mb-3">
+          <label for="comentarios" class="form-label">Comentarios</label>
+          <textarea class="form-control" id="comentarios" name="comentarios" rows="4" required></textarea>
+        </div>
+
+        <!-- Botón de enviar -->
+        <button type="submit" class="btn btn-primary">Enviar Comentario</button>
+      </form>
+    </div>
+  </div>
+</div>
+
 <app-footer></app-footer>

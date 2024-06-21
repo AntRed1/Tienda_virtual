@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { FooterComponent } from '../../footer/footer.component';
 import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
-import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-register',
@@ -15,63 +14,45 @@ import * as bcrypt from 'bcryptjs';
   imports: [FormsModule, FooterComponent, RouterLink],
 })
 export class RegisterComponent {
+  title = 'Registrarse';
+
   constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit(registerForm: NgForm) {
     if (registerForm.valid) {
       this.getUserIP()
         .then((ip) => {
-          const hashedPassword = bcrypt.hashSync(
-            registerForm.value.password,
-            10
-          );
           const formData = {
             name: registerForm.value.name,
             lastName: registerForm.value.lastName,
             telephone: registerForm.value.telephone,
             email: registerForm.value.email,
-            password: hashedPassword,
+            password: registerForm.value.password, // Guardamos la contraseña en texto plano
             address: registerForm.value.address,
             ip: ip,
           };
           this.authService.saveUserData(formData);
           Swal.fire({
-            title: '¡Buen trabajo!',
-            text: 'Registro exitoso',
+            title: '¡Registro exitoso!',
+            text: 'Ahora puedes iniciar sesión con tu cuenta.',
             icon: 'success',
           }).then(() => {
             this.router.navigate(['/login']);
           });
-          registerForm.reset();
+          registerForm.resetForm();
         })
-        .catch((_error) => {
-          const hashedPassword = bcrypt.hashSync(
-            registerForm.value.password,
-            10
-          );
-          const formData = {
-            name: registerForm.value.name,
-            lastName: registerForm.value.lastName,
-            telephone: registerForm.value.telephone,
-            email: registerForm.value.email,
-            password: hashedPassword,
-            address: registerForm.value.address,
-            ip: null,
-          };
-          this.authService.saveUserData(formData);
+        .catch((error) => {
+          console.error('Error al obtener la IP:', error);
           Swal.fire({
-            title: '¡Buen trabajo!',
-            text: 'Registro exitoso',
-            icon: 'success',
-          }).then(() => {
-            this.router.navigate(['/login']);
+            title: 'Error',
+            text: 'Hubo un problema al intentar registrar. Por favor, intenta nuevamente más tarde.',
+            icon: 'error',
           });
-          registerForm.reset();
         });
     } else {
       Swal.fire({
         title: 'Error',
-        text: 'Por favor, complete todos los campos correctamente',
+        text: 'Por favor, completa todos los campos correctamente.',
         icon: 'error',
       });
     }
