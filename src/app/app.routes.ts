@@ -1,24 +1,29 @@
+import { RegisterComponent } from './component/pages/register/register.component';
 import { Routes } from '@angular/router';
-import { HeaderComponent } from './component/header/header.component';
 import { MainComponent } from './component/main/main.component';
-import { FooterComponent } from './component/footer/footer.component';
 import { LoginComponent } from './component/pages/login/login.component';
+import { ContactsComponent } from './component/pages/contacts/contacts.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: HeaderComponent,
+    redirectTo: '/dashboard',
+    pathMatch: 'full',
   },
   {
-    path: '',
+    path: 'dashboard',
     component: MainComponent,
   },
   {
-    path: '',
-    component: FooterComponent,
+    path: 'login',
+    component: LoginComponent,
   },
   {
-    path: '',
-    component: LoginComponent,
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: 'contacts',
+    component: ContactsComponent,
   },
 ];

@@ -1,16 +1,36 @@
-import { Component, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
+import { ContactsComponent } from './../pages/contacts/contacts.component';
+import {
+  Component,
+  AfterViewInit,
+  Inject,
+  PLATFORM_ID,
+  OnInit,
+} from '@angular/core';
 import { FooterComponent } from '../footer/footer.component';
-import { isPlatformBrowser } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { ArticleService } from '../../services/article.service';
+import { ResendEmailService } from '../../services/resend-email.service';
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
-  selector: 'app-main',
-  standalone: true,
-  imports: [FooterComponent],
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css'],
+    selector: 'app-main',
+    standalone: true,
+    templateUrl: './main.component.html',
+    styleUrls: ['./main.component.css'],
+    imports: [FooterComponent, ContactsComponent, CommonModule, HeaderComponent]
 })
-export class MainComponent implements AfterViewInit {
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+export class MainComponent implements OnInit, AfterViewInit {
+  articulos: any[] = [];
+
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private articleService: ArticleService,
+    private resendEmailService: ResendEmailService
+  ) {}
+
+  ngOnInit() {
+    this.loadArticles();
+  }
 
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
@@ -18,10 +38,16 @@ export class MainComponent implements AfterViewInit {
     }
   }
 
+  private loadArticles() {
+    this.articulos = this.articleService.getArticles();
+  }
+
   private initializeGallery() {
     const galleryItems = document.querySelectorAll('.gallery-item');
 
-    const modalImage = document.getElementById('modal-image') as HTMLImageElement;
+    const modalImage = document.getElementById(
+      'modal-image'
+    ) as HTMLImageElement;
     const modalElement = document.getElementById('gallery-modal');
 
     if (modalElement) {
@@ -40,5 +66,28 @@ export class MainComponent implements AfterViewInit {
         });
       });
     }
+  }
+
+  sendEmail(event: Event) {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+
+    const to = (form.querySelector('#recipientEmail') as HTMLInputElement)
+      ?.value;
+    const subject = (form.querySelector('#emailSubject') as HTMLInputElement)
+      ?.value;
+    const message = (form.querySelector('#emailMessage') as HTMLTextAreaElement)
+      ?.value;
+
+    this.resendEmailService.sendEmail(to, subject, message).then(
+      () => {
+        console.log('Email sent successfully!');
+        // Aquí puedes agregar una notificación o mensaje de éxito si lo deseas
+      },
+      (error) => {
+        console.error('Failed to send email:', error);
+        // Aquí puedes manejar el error, mostrar mensajes de error, etc.
+      }
+    );
   }
 }
