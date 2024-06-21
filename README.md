@@ -23,7 +23,7 @@ Para ejecutar este proyecto en tu entorno local, asegúrate de tener Node.js y n
 
 1. Clona este repositorio a tu máquina local usando Git:
    ```bash
-   git clone https://github.com/tu-usuario/tu-proyecto.git
+   git clone (https://github.com/AntRed1/Tienda_virtual.git)
 
 2. Navega al directorio del proyecto:
    cd Tienda-Virtua

@@ -1,37 +1,44 @@
-import { Component } from '@angular/core';
-import { ResendEmailService } from '../../services/resend-email.service';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
+import { AuthService } from '../../services/auth.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [FooterComponent],
+  imports: [FooterComponent, CommonModule, RouterLink, ReactiveFormsModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent {
-  constructor(private resendEmailService: ResendEmailService) {}
+export class HeaderComponent implements OnInit {
+  title = 'Tienda Virtual';
+  isLoggedIn = false;
+  name = '';
 
-  sendEmail(event: Event) {
-    event.preventDefault();
-    const form = event.target as HTMLFormElement;
+  constructor(private authService: AuthService, private router: Router) {}
 
-    const to = (form.querySelector('#recipientEmail') as HTMLInputElement)
-      ?.value;
-    const subject = (form.querySelector('#emailSubject') as HTMLInputElement)
-      ?.value;
-    const message = (form.querySelector('#emailMessage') as HTMLTextAreaElement)
-      ?.value;
+  ngOnInit() {
+    this.isLoggedIn = this.authService.isLoggedIn();
+    if (this.isLoggedIn) {
+      const currentUser = this.authService.getCurrentUser();
+      this.name = currentUser ? currentUser.name : '';
+    }
+  }
 
-    this.resendEmailService.sendEmail(to, subject, message).then(
-      () => {
-        console.log('Email sent successfully!');
-        // Aquí puedes agregar una notificación o mensaje de éxito si lo deseas
-      },
-      (error) => {
-        console.error('Failed to send email:', error);
-        // Aquí puedes manejar el error, mostrar mensajes de error, etc.
-      }
-    );
+  login() {
+    if (this.isLoggedIn) {
+      alert('Ya has iniciado sesión');
+    } else {
+      this.router.navigate(['/login']);
+    }
+  }
+
+  logout() {
+    this.authService.clearUserData();
+    this.isLoggedIn = false;
+    this.name = '';
+    this.router.navigate(['/']);
   }
 }
