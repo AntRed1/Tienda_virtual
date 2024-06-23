@@ -1,3 +1,5 @@
+// article.service.ts
+
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -17,7 +19,8 @@ export class ArticleService {
         'img/img_massage_chair/image.png',
         'img/img_massage_chair/Screenshot 2024-06-02 073355.png',
         'img/img_massage_chair/Screenshot 2024-06-02 073555.png'
-      ]
+      ],
+      quantities: [1, 2, 3, 4, 5]
     },
     {
       id: 2,
@@ -28,7 +31,8 @@ export class ArticleService {
       images: [
         'img/img_fan/Screenshot 2024-06-02 073858.png',
         'img/img_fan/Screenshot 2024-06-02 074010.png'
-      ]
+      ],
+      quantities: [1, 2, 3, 4, 5]
     },
     {
       id: 3,
@@ -39,7 +43,8 @@ export class ArticleService {
       images: [
         'img/img_cepillo/Screenshot 2024-06-02 074209.png',
         'img/img_cepillo/Screenshot 2024-06-02 074247.png'
-      ]
+      ],
+      quantities: [1, 2, 3, 4, 5]
     },
     {
       id: 4,
@@ -50,7 +55,8 @@ export class ArticleService {
       images: [
         'img/img_fregona/Screenshot 2024-06-02 074542.png',
         'img/img_fregona/Screenshot 2024-06-02 074829.png'
-      ]
+      ],
+      quantities: [1, 2, 3, 4, 5]
     },
     {
       id: 5,
@@ -61,7 +67,8 @@ export class ArticleService {
       images: [
         'img/img_power bank/1.png',
         'img/img_power bank/2.png'
-      ]
+      ],
+      quantities: [1, 2, 3, 4, 5]
     }
   ];
 

@@ -1,12 +1,11 @@
+<!-- login.component.html -->
 <div class="form-container">
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-lg-6">
         <div class="card shadow-lg">
           <div class="card-body p-5">
-            <h2 class="text-center mb-4">
-              <a [routerLink]="['/dashboard']">{{ title }}</a>
-            </h2>
+            <h2 class="text-center mb-4">{{ title }}</h2>
             <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
@@ -43,9 +42,7 @@
             <div class="text-center">
               <p>
                 ¿No tienes cuenta?
-                <a [routerLink]="['/register']" class="btn btn-link"
-                  >Registrarse</a
-                >
+                <a [routerLink]="['/register']" class="btn btn-link">Registrarse</a>
               </p>
             </div>
           </div>

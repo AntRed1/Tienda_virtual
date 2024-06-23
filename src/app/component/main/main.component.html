@@ -1,13 +1,14 @@
 <app-header></app-header>
 
 <main class="container-fluid alert table-responsive-md">
-
   <article>
     <aside>
       <section class="gallery min-vh-100">
         <div class="row container-fluid">
-          @for (articulo of articulos; track articulo.id) {
-          <div class="col-sm-3 col-md-3 col-lg-3 cell alert">
+          <div
+            class="col-sm-3 col-md-3 col-lg-3 cell alert"
+            *ngFor="let articulo of articulos; trackBy: trackByArticuloId"
+          >
             <div class="card">
               <div class="card-header">
                 <p class="card-header text-center">
@@ -45,6 +46,7 @@
                         [alt]="articulo.name"
                         data-bs-toggle="modal"
                         data-bs-target="#gallery-modal"
+                        (click)="openModal(articulo, image)"
                       />
                     </div>
                   </div>
@@ -87,11 +89,10 @@
               </div>
             </div>
           </div>
-          }
         </div>
       </section>
 
-  <!-- offcanvas -->
+      <!-- offcanvas -->
       <div
         class="offcanvas offcanvas-end"
         tabindex="-1"
@@ -100,7 +101,6 @@
       >
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasRightLabel">
-            Offcanvas right
           </h5>
           <button
             type="button"
@@ -138,14 +138,24 @@
           <img src="" id="modal-image" class="img-fluid" alt="Imagenes" />
         </div>
         <div class="modal-footer">
+          <p style="color: black"><strong>Cantidad</strong></p>
+          <input
+            type="number"
+            id="quantity"
+            min="1"
+            value="1"
+            class="form-control w-25"
+          />
+          <button type="button" class="btn btn-primary" (click)="addToCart()">
+            Agregar al carrito
+          </button>
           <button
             type="button"
             class="btn btn-secondary"
             data-bs-dismiss="modal"
           >
-            Close
+            Cerrar
           </button>
-          <button type="button" class="btn btn-primary">Understood</button>
         </div>
       </div>
     </div>
