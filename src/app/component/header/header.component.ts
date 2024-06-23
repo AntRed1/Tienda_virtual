@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { ResendEmailService } from '../../services/resend-email.service';
 import { ArticleService } from '../../services/article.service';
-import { UserStateService } from '../../services/user-state.service'; // Importar el servicio
+import { UserStateService } from '../../services/user-state.service';
 
 @Component({
   selector: 'app-header',
@@ -37,13 +37,13 @@ export class HeaderComponent implements OnInit {
     protected cartService: CartService,
     private router: Router,
     private articleService: ArticleService,
-    private userStateService: UserStateService // Inyectar el servicio
+    private userStateService: UserStateService
   ) {}
 
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn();
     if (this.isLoggedIn) {
-      const currentUser = this.userStateService.getCurrentUser(); // Obtener el usuario desde el servicio de estado
+      const currentUser = this.userStateService.getCurrentUser();
       this.name = currentUser ? currentUser.name : '';
     }
 
@@ -80,29 +80,25 @@ export class HeaderComponent implements OnInit {
 
         this.resendEmailService
           .sendEmail(currentUser.email, 'Resumen de Compra', resumenHTML)
-          .then(
-            () => {
-              Swal.fire(
-                '¡Compra Procesada!',
-                'Se ha enviado un resumen de la compra a tu correo electrónico.',
-                'success'
-              );
-              console.log('Email enviado correctamente.');
-              localStorage.setItem('cartItems', JSON.stringify(cartItems));
-            },
-            (error: any) => {
-              console.error('Error al enviar el correo:', error);
-              Swal.fire(
-                'Error',
-                'No se pudo enviar el correo electrónico.',
-                'error'
-              );
-              console.error('Error al enviar el correo:', error);
-            }
-          );
-
-        this.cartService.clearCart();
-        this.cartItemCount = 0;
+          .then((response) => {
+            console.log('Correo enviado correctamente:', response);
+            Swal.fire(
+              '¡Compra Procesada!',
+              'Se ha enviado un resumen de la compra a tu correo electrónico.',
+              'success'
+            );
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            this.cartService.clearCart();
+            this.cartItemCount = 0;
+          })
+          .catch((error) => {
+            console.error('Error al enviar el correo:', error);
+            Swal.fire(
+              'Error',
+              'No se pudo enviar el correo electrónico.',
+              'error'
+            );
+          });
       }
     }
   }
@@ -143,6 +139,7 @@ export class HeaderComponent implements OnInit {
       }
     });
   }
+
   logout() {
     this.authService.clearUserData();
     this.isLoggedIn = false;
